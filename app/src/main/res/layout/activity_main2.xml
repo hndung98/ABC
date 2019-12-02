@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-    <TextView
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="WELCOME"
-        android:textStyle="bold"
+    tools:context=".Main2Activity">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/navigation"
+        android:animateLayoutChanges="true"
+        tools:context=".HomeStudent" />
 
-
-    <Button
-        android:scaleX="1.5"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOG OUT"
-        android:id="@+id/buttonLogOut"
-        android:layout_marginTop="20dp"/>
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:menu="@menu/bottom_menu"
+        />
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="TẠO BÀI KIỂM TRA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tvBankName"
+        android:singleLine="true"
+        android:gravity="center"
+        android:hint="Tên ngân hàng"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edtTestName"
+        android:singleLine="true"
+        android:hint="TÊN BÀI KIỂM TRA"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edtPassword"
+        android:singleLine="true"
+        android:hint="Mật khẩu bài kiểm tra"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textAlignment="center"
+        android:text="Thời gian làm bài kiểm tra (phút)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+    <Spinner
+        android:id="@+id/spinnerTime"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="20dp" />
+    <Button
+        android:id="@+id/buttonAddQuestions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="THÊM CÂU HỎI"/>
+</LinearLayout>

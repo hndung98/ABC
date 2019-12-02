@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "956873206048",
+    "firebase_url": "https://online-quiz-app-ttcnpm.firebaseio.com",
+    "project_id": "online-quiz-app-ttcnpm",
+    "storage_bucket": "online-quiz-app-ttcnpm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956873206048:android:f783c50618605c0d144f45",
+        "android_client_info": {
+          "package_name": "com.example.myfirstapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956873206048-qacd3s1d7qndvhcmt36e1kfrgur9nsu2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myfirstapplication",
+            "certificate_hash": "8f5fc6e7419670963cecff8643b2371354740f72"
+          }
+        },
+        {
+          "client_id": "956873206048-phjc3n2kqmvvv84srjnr3rk7i11aqcg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBov33LbVa61uiUTle38do--CBSkbRy8lQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956873206048-phjc3n2kqmvvv84srjnr3rk7i11aqcg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

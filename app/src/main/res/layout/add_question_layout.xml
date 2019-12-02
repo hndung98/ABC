@@ -4,75 +4,90 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-<TextView
-    android:gravity="center"
-    android:textSize="30dp"
-    android:textStyle="bold"
-    android:text="ĐĂNG KÝ"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    <TextView
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="NHẬP CÂU HỎI MỚI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edittextFullName"
+        android:id="@+id/edtBankID"
         android:singleLine="true"
-        android:hint="Họ và tên"
+        android:hint="TÊN NGÂN HÀNG THÊM CÂU HỎI"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edittextUser"
+        android:id="@+id/edtQuestion"
         android:singleLine="true"
-        android:hint="Tên tài khoản"
+        android:hint="Câu hỏi"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edittextPassword"
+        android:id="@+id/edtAnswer1"
         android:singleLine="true"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"
+        android:hint="Trả lời 1"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edittextPassword2"
+        android:id="@+id/edtAnswer2"
         android:singleLine="true"
-        android:hint="Nhập lại mật khẩu"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"
+        android:hint="Trả lời 2"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/edittextEmail"
+        android:id="@+id/edtAnswer3"
         android:singleLine="true"
-        android:hint="Email"
-        android:layout_marginTop="20dp"
+        android:hint="Trả lời 3"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edtAnswer4"
+        android:singleLine="true"
+        android:hint="Trả lời 4"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
         android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chọn loại tài khoản"
-        android:layout_marginTop="20dp">
+        android:text="Độ khó"
+        android:layout_marginTop="10dp">
     </TextView>
     <Spinner
-        android:id="@+id/spinnerUserType"
+        android:id="@+id/spinnerLevel"
         android:layout_width="fill_parent"
-        android:layout_height="30dp" />
+        android:layout_height="20dp" />
+    <TextView
+        android:textAlignment="center"
+        android:text="Đáp án đúng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+    <Spinner
+        android:id="@+id/spinnerValidAnswer"
+        android:layout_width="fill_parent"
+        android:layout_height="20dp" />
     <LinearLayout
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <Button
             android:layout_marginRight="10dp"
-            android:id="@+id/buttonOK"
-            android:text="ĐĂNG KÝ"
+            android:id="@+id/btnAdd"
+            android:text="THÊM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
-            android:id="@+id/buttonCancel"
+            android:id="@+id/btnCancel"
             android:text="HỦY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
