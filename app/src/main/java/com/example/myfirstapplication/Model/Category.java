@@ -1,4 +1,4 @@
-package com.example.myfirstapplication;
+package com.example.myfirstapplication.Model;
 
 public class Category {
     private  String Name, Image;

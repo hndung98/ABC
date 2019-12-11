@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateTestActivity"></activity>
+        <activity android:name=".ViewHolder.DoTestActivity"></activity>
+        <activity android:name=".CreateTestActivity" />
         <activity android:name=".BankActivity" />
         <activity android:name=".HomeTeacher" />
         <activity android:name=".HomeStudent" />

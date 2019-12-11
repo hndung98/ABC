@@ -16,8 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myfirstapplication.Adapter.CustomAdapter;
-import com.example.myfirstapplication.ViewHolder.Contact;
+import com.example.myfirstapplication.Model.Bank;
+import com.example.myfirstapplication.Model.Question;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

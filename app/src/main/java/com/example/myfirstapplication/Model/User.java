@@ -1,4 +1,4 @@
-package com.example.myfirstapplication;
+package com.example.myfirstapplication.Model;
 
 public class User {
     private String userName = null;

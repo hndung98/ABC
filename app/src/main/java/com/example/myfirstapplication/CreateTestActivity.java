@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myfirstapplication.Adapter.CustomAdapter;
+import com.example.myfirstapplication.Model.Question;
+import com.example.myfirstapplication.Model.Test;
 import com.example.myfirstapplication.ViewHolder.Contact;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,34 +53,51 @@ public class CreateTestActivity extends AppCompatActivity {
         Mapping();
         ControllButton();
 
+        questions.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot post: dataSnapshot.getChildren()) {
+                    Question question = post.getValue(Question.class);
+                    if (question.getBank().equals(bankName)){
+                        Contact contact = new Contact(question.getID(), question.getQuestion());
+                        list.add(contact);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        String output = "list size = " + list.size();
+        Toast.makeText(CreateTestActivity.this, output, Toast.LENGTH_SHORT).show();
+        lvQuestions.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        lvQuestions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        Log.i(TAG, "onItemClick: "+position);
+                CheckedTextView v = (CheckedTextView) view;
+                boolean currentCheck = v.isChecked();
+                Contact contact = (Contact)lvQuestions.getItemAtPosition(position);
+                contact.setCheck(currentCheck);
+            }
+        });
+        ArrayAdapter<Contact> arrayAdapter = new ArrayAdapter<Contact>(CreateTestActivity.this, android.R.layout.simple_list_item_checked, list);
+        lvQuestions.setAdapter(arrayAdapter);
+        for (int i = 0; i < list.size(); i++){
+            lvQuestions.setItemChecked(i, list.get(i).getCheck());
+        }
     }
 
 
 
     private void ControllButton() {
 
-        //        btnViewQuestion.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final Dialog dialog = new Dialog(BankActivity.this);
-//                dialog.setCancelable(true);
-//                dialog.setContentView(R.layout.list_questions_layout);
-//                dialog.show();
-//                lvQuestions = (ListView)dialog.findViewById(R.id.lvListQuestions);
-//                ArrayList<Contact> list = new ArrayList<>();
-//
-//                for (int i = 1; i < 11; i++){
-//                    Contact contact = new Contact("" + i, "Cau hoi " + i + " ?");
-//                    list.add(contact);
-//                }
-//
-//                CustomAdapter customAdapter = new CustomAdapter(BankActivity.this, R.layout.row_item_in_list_view, list);
-//                lvQuestions.setAdapter(customAdapter);
-//            }
-//        });
         btnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                list.clear();
                 questions.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -100,9 +117,24 @@ public class CreateTestActivity extends AppCompatActivity {
                 });
                 String output = "list size = " + list.size();
                 Toast.makeText(CreateTestActivity.this, output, Toast.LENGTH_SHORT).show();
-                customAdapter = new CustomAdapter(CreateTestActivity.this, R.layout.row_item_in_list_view, list);
-                lvQuestions.setAdapter(customAdapter);
-                list.clear();
+                lvQuestions.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+                lvQuestions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        Log.i(TAG, "onItemClick: "+position);
+                        CheckedTextView v = (CheckedTextView) view;
+                        boolean currentCheck = v.isChecked();
+                        Contact contact = (Contact)lvQuestions.getItemAtPosition(position);
+                        contact.setCheck(currentCheck);
+                    }
+                });
+                ArrayAdapter<Contact> arrayAdapter = new ArrayAdapter<Contact>(CreateTestActivity.this, android.R.layout.simple_list_item_checked, list);
+                lvQuestions.setAdapter(arrayAdapter);
+                for (int i = 0; i < list.size(); i++){
+                    lvQuestions.setItemChecked(i, list.get(i).getCheck());
+                }
+//                customAdapter = new CustomAdapter(CreateTestActivity.this, R.layout.row_item_in_list_view, list);
+//                lvQuestions.setAdapter(customAdapter);
             }
         });
 
@@ -111,12 +143,11 @@ public class CreateTestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final List<String> listQuestion = new ArrayList<>();
                 int size = 0;
-                for (int i = 0; i < customAdapter.objects.size(); i++){
-                    if (customAdapter.objects.get(i).getCheck()){
-                        listQuestion.add(customAdapter.objects.get(i).getQuestion());
+                for (int i = 0; i < list.size(); i++){
+                    if (list.get(i).getCheck()){
+                        listQuestion.add(list.get(i).getId());
                     }
                 }
-
                 size = listQuestion.size();
                 Toast.makeText(CreateTestActivity.this, "size : " + size, Toast.LENGTH_SHORT).show();
 //                lvQuestions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -128,6 +159,8 @@ public class CreateTestActivity extends AppCompatActivity {
 //                        listQuestion.add(contact.getId());
 //                    }
 //                });
+
+
                 if(size < 5){
                     Toast.makeText(CreateTestActivity.this, "Số câu hỏi phải lớn hơn 5", Toast.LENGTH_SHORT).show();
                     return;

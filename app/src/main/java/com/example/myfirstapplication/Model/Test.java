@@ -1,4 +1,4 @@
-package com.example.myfirstapplication;
+package com.example.myfirstapplication.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ public class Test {
     private String bankName = null;
     private String password = null;
     private int time = 0;
+    private boolean active = true;
     List<String> questionList = new ArrayList<>();
 
     public Test(){}
@@ -17,6 +18,8 @@ public class Test {
         this.password = password;
         this.time = time;
     }
+    public boolean getActive(){return this.active;}
+    public void setActive(boolean active){this.active = active;}
     public String getTestName(){return this.testName;}
     public void setTestName(String name){this.testName = name;}
     public String getBankName(){return this.bankName;}

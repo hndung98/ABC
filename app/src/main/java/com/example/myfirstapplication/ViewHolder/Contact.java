@@ -16,4 +16,8 @@ public class Contact {
     public void setId(String id){this.id = id;}
     public String getQuestion(){return this.question;}
     public void setQuestion(String question){this.question = question;}
+    @Override
+    public String toString() {
+        return this.question;
+    }
 }
